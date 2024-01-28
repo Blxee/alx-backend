@@ -33,6 +33,6 @@ class Server:
         assert page_size > 0,  "page_size must be greater than 0"
         self.dataset()
         i, j = index_range(page, page_size)
-        if self.__dataset == None:
+        if self.__dataset is None:
             return []
         return self.__dataset[i:j]
