@@ -41,7 +41,7 @@ class Server:
         """Returns page from the dataset with additional meta data."""
         data = self.get_page(page, page_size)
         if self.__dataset is None:
-            return {}
+            data = []
 
         next_page = page + 1
         if next_page * page_size >= len(self.__dataset):
