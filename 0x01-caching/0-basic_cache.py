@@ -14,4 +14,4 @@ class BasicCache(BaseCaching):
 
     def get(self, key):
         """Retrieves an entry from the cache system."""
-        self.cache_data.get(key)
+        return self.cache_data.get(key)
