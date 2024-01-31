@@ -16,9 +16,9 @@ class LFUCache(BaseCaching):
         if key is None or item is None:
             return
         if len(self.cache_data) + 1 > BaseCaching.MAX_ITEMS:
-            key = heappop(self._least_frequently_used)[1]
-            del self.cache_data[key]
-            print('DISCARD:', key)
+            rmkey = heappop(self._least_frequently_used)[1]
+            del self.cache_data[rmkey]
+            print('DISCARD:', rmkey)
         self.cache_data[key] = item
         frequency = 0
         if key in map(lambda x: x[1], self._least_frequently_used):
@@ -31,4 +31,4 @@ class LFUCache(BaseCaching):
             return None
         frequency = heappop(self._least_frequently_used)[0]
         heappush(self._least_frequently_used, (frequency + 1, key))
-        return self.cache_data.get(key)
+        return self.cache_data[key]
