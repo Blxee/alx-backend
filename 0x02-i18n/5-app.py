@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""4. Force locale with URL parameter"""
+"""5. Mock logging in"""
 from typing import Union
 from flask import Flask, render_template, request, g
 from flask_babel import Babel
