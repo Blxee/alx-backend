@@ -57,4 +57,4 @@ def get_locale() -> str:
 @app.route('/')
 def index() -> str:
     """Function to handle the main / route."""
-    return render_template('5-index.html')
+    return render_template('6-index.html')
