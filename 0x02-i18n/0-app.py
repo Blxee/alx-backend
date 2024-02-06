@@ -9,4 +9,4 @@ app = Flask(__name__)
 @app.route('/')
 def index() -> str:
     """Function to handle the main / route."""
-    return render_template('templates/0-index.html')
+    return render_template('0-index.html')
