@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """4. Force locale with URL parameter"""
-from typing import Optional
+from typing import Union
 from flask import Flask, render_template, request, g
 from flask_babel import Babel
 
@@ -25,7 +25,7 @@ users = {
 }
 
 
-def get_user(id: int) -> Optional[dict]:
+def get_user(id: int) -> Union[dict, None]:
     return users.get(id)
 
 
