@@ -7,5 +7,6 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def index():
+def index() -> str:
+    """Function to handle the main / route."""
     return render_template('templates/0-index.html')
