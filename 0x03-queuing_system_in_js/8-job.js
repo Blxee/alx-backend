@@ -1,6 +1,6 @@
 import kue from 'kue';
 
-module.exports = function createPushNotificationsJobs(jobs, queue) {
+export default function createPushNotificationsJobs(jobs, queue) {
   if (!(jobs instanceof Array)) {
     throw new Error('Jobs is not an array');
   }

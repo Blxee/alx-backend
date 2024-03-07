@@ -32,35 +32,35 @@ async function getCurrentReservedStockById(itemId) {
 const app = express();
 
 app.get('/list_products', (req, res) => {
-  res.send(JSON.stringify(listProducts));
+  res.json(listProducts);
 });
 
 app.get('/list_products/:itemId', async (req, res) => {
   const itemId = parseInt(req.params.itemId);
   let item = getItemById(itemId);
   if (!item) {
-    res.send('{"status":"Product not found"}');
+    res.json({ status: "Product not found" });
     return;
   }
   const currentQuantity = await getCurrentReservedStockById(itemId);
   item = { currentQuantity, ...item };
-  res.send(JSON.stringify(item));
+  res.json(item);
 });
 
 app.get('/reserve_product/:itemId', async (req, res) => {
   const itemId = parseInt(req.params.itemId);
   const item = getItemById(itemId);
   if (!item) {
-    res.send('{"status":"Product not found"}');
+    res.json({ status: "Product not found" });
     return;
   }
   const currentQuantity = await getCurrentReservedStockById(itemId);
   if (currentQuantity <= 0) {
-    res.send(`{"status":"Not enough stock available","itemId":${itemId}}`);
+    res.json({ status: "Not enough stock available", itemId: '' + itemId });
     return;
   }
   reserveStockById(itemId, currentQuantity - 1);
-  res.send(`{"status":"Reservation confirmed","itemId":${itemId}}`);
+  res.json({ status: "Reservation confirmed", itemId: '' + itemId });
 });
 
 app.listen(1245);
